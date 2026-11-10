@@ -32,7 +32,7 @@ jobs:
       - name: Build the site
         run: pnpm build
         env:
-          VITE_BASE_PATH: /Estro-tech/
+          VITE_BASE_PATH: /Estro/
       - name: Keep app routes working on refresh
         run: cp dist/index.html dist/404.html
       - name: Upload the website
