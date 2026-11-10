@@ -1,0 +1,43 @@
+.testimonial-carousel { width: min(100%, 1180px); margin: 30px auto 0; }
+.testimonial-carousel__stage { position: relative; width: 100%; height: clamp(370px, 34vw, 420px); perspective: 1400px; touch-action: pan-y; }
+.testimonial-carousel__stage:focus-visible { border-radius: 24px; outline: 2px solid var(--electric); outline-offset: 5px; }
+.testimonial-carousel .testimonial-card { position: absolute; top: 0; left: 50%; width: 31%; min-height: 100%; flex: 0 0 31%; box-sizing: border-box; cursor: default; transition: transform .72s cubic-bezier(.2,.7,.18,1), opacity .55s ease, filter .55s ease, box-shadow .55s ease; }
+.testimonial-carousel .testimonial-carousel__card--previous { z-index: 1; transform: translateX(calc(-50% - 105%)) scale(.95); opacity: .9; }
+.testimonial-carousel .testimonial-carousel__card--active { z-index: 2; transform: translateX(-50%) scale(1); opacity: 1; box-shadow: 0 24px 64px rgba(4,43,94,.14), inset 0 1px 0 rgba(255,255,255,.96), inset 0 -1px 0 rgba(136,220,255,.18); animation: testimonial-card-in .45s ease-out both; }
+.testimonial-carousel .testimonial-carousel__card--next { z-index: 1; transform: translateX(calc(-50% + 105%)) scale(.95); opacity: .9; }
+.testimonial-carousel .testimonial-card:hover { transform: none; }
+.testimonial-carousel .testimonial-carousel__card--previous:hover { transform: translateX(calc(-50% - 105%)) scale(.95); }
+.testimonial-carousel .testimonial-carousel__card--next:hover { transform: translateX(calc(-50% + 105%)) scale(.95); }
+.testimonial-carousel .testimonial-carousel__card--active:hover { transform: translateX(-50%) scale(1); }
+.testimonial-carousel__progress { width: 100%; height: 2px; margin: 18px auto 0; overflow: hidden; background: rgba(4,43,94,.1); }
+.testimonial-carousel__progress span { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: var(--electric); animation: testimonial-timer 5s linear both; }
+.testimonial-carousel__controls { display: flex; width: 100%; align-items: center; gap: 15px; margin: 16px auto 0; }
+.testimonial-carousel__controls > button { display: grid; width: 42px; height: 42px; flex: 0 0 42px; place-items: center; border: 1px solid rgba(4,43,94,.2); border-radius: 50%; color: var(--navy); background: rgba(255,255,255,.65); font-size: 20px; cursor: pointer; transition: color .2s ease, background .2s ease, border-color .2s ease; }
+.testimonial-carousel__controls > button:hover { border-color: var(--electric); color: #fff; background: var(--electric); }
+.testimonial-carousel__dots { display: flex; align-items: center; gap: 7px; }
+.testimonial-carousel__dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #a9beca; cursor: pointer; transition: width .2s ease, border-radius .2s ease, background .2s ease; }
+.testimonial-carousel__dots button[aria-current="true"] { width: 24px; border-radius: 8px; background: var(--electric); }
+.testimonial-carousel__count { margin-left: auto; color: #647987; font: 600 9px/1.5 Montserrat, sans-serif; letter-spacing: .14em; }
+@keyframes testimonial-card-in { from { filter: blur(2px); } to { filter: blur(0); } }
+@keyframes testimonial-timer { to { transform: scaleX(1); } }
+@media (max-width: 900px) {
+  .testimonial-carousel { width: min(calc(100% - 40px), 720px); margin-top: 24px; }
+  .testimonial-carousel__stage { height: auto; min-height: 360px; }
+  .testimonial-carousel .testimonial-card { position: relative; top: auto; left: auto; width: 100%; min-height: 360px; flex-basis: 100%; }
+  .testimonial-carousel .testimonial-carousel__card--previous,
+  .testimonial-carousel .testimonial-carousel__card--next { display: none; }
+  .testimonial-carousel .testimonial-carousel__card--active,
+  .testimonial-carousel .testimonial-carousel__card--active:hover { transform: none; }
+}
+@media (max-width: 640px) {
+  .testimonial-carousel { width: calc(100% - 40px); margin-top: 20px; }
+  .testimonial-carousel__stage { min-height: 360px; }
+  .testimonial-carousel .testimonial-card { min-height: 360px; padding: 23px 21px; border-radius: 19px; }
+  .testimonial-carousel__progress { margin-top: 14px; }
+  .testimonial-carousel__controls { gap: 12px; margin-top: 13px; }
+  .testimonial-carousel__controls > button { width: 40px; height: 40px; flex-basis: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-carousel .testimonial-card { transition: none; animation: none; }
+  .testimonial-carousel__progress span { animation: none; transform: scaleX(1); }
+}
